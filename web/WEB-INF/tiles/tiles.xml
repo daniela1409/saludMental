@@ -61,4 +61,14 @@
         <put-attribute name="title" value="Crear Privilegio" />  
         <put-attribute name="body" value="/WEB-INF/jsp/privilegios/crear.jsp" />  
     </definition>  
+    
+    <!-- Administración Page -->
+    <definition name="administracion/indexUsuario" extends="base-definition">  
+        <put-attribute name="title" value="userIndex" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/administracion/indexUsuario.jsp" />  
+    </definition> 
+    <definition name="administracion/crearUsuario" extends="base-definition">  
+        <put-attribute name="title" value="crearUsuarios" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/administracion/crearUsuario.jsp" />  
+    </definition> 
 </tiles-definitions>

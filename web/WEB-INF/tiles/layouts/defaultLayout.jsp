@@ -78,6 +78,16 @@
                                         Inicio
                                     </a>
                                 </li>
+                                <li class='dropdown'>
+                                    <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                        Administrar<span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                       
+                                        <li><a href='${pageContext.request.contextPath}/administracion/indexUsuario'>Usuarios</a></li>
+                                        
+                                    </ul>
+                                </li>
                                 <li class="dropdown">
                                     <a style="color:white" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                                        aria-haspopup="true" aria-expanded="false">
@@ -143,17 +153,15 @@
         </footer>
 
 
-
-        <script src='<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/js/funciones.js"/>'></script>
+        
+        
+        <script src='<c:url value="/resources/js/jquery-1.12.4.min.js"/>'></script>
         <script src='<c:url value="/resources/assets/js/bootstrap.min.js"/>'></script>
         <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery-3.5.1.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/js/jquery.textcomplete.min.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/js/jquery.jplayer.min.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/js/jplayer.playlist.min.js"/>'></script>
         <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery.dataTables.min.js"/>'></script>
         <script type="text/javascript" src='<c:url value="/resources/assets/jsTables//dataTables.bootstrap4.min.js"/>'></script>
         <script src='<c:url value="/resources/assets/jquery-ui/jquery-ui.min.js"/>'></script>
+        <script type="text/javascript" src='<c:url value="/resources/assets/js/funciones.js"/>'></script>
 
     </body>
 

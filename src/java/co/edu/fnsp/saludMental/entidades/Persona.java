@@ -17,7 +17,6 @@ public class Persona {
     private String nombres;
     private String apellidos;
     private String telefono;
-    private String celular;
     private String email;
     
     /**
@@ -104,19 +103,7 @@ public class Persona {
         this.telefono = telefono;
     }
 
-    /**
-     * @return the celular
-     */
-    public String getCelular() {
-        return celular;
-    }
-
-    /**
-     * @param celular the celular to set
-     */
-    public void setCelular(String celular) {
-        this.celular = celular;
-    }
+   
 
     /**
      * @return the email
@@ -132,4 +119,8 @@ public class Persona {
         this.email = email;
     }
    
+    public String nombreApellido(){
+        String nomApe = nombres + " " + apellidos;
+        return nomApe;
+    }
 }
