@@ -7,7 +7,7 @@
 <div class="card" style="padding: 10px">
     <div class="card-header " style="margin-bottom: 10px;"><h3>Agregar usuario</h3></div>
     <div class="card-body">
-        <form method="post" id="usuario" enctype="multipart/form-data">
+        <form:form method="post" modelAttribute="user" >
             
             <div class="row">
                 <div class="col-md-6">
@@ -49,7 +49,7 @@
 
             <button class="btn btn-success" type="button" onclick="mostrar()">Guardar</button>
             <!--<input type="submit" value="Submit">-->
-        </form>
+        </form:form>
     </div>
     
 </div>
@@ -111,8 +111,8 @@
                 
             }
            else{
-               console.log( $('#usuario').val());
-               //$('#usuario').submit();
+               //console.log( $('#usuario').val());
+               $('#user').submit();
             }    
        
         }   
