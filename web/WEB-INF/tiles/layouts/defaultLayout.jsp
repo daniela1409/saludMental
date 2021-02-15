@@ -15,6 +15,14 @@
         <link rel="stylesheet" type="text/css" href='<c:url value="/resources/assets/fontawesome-free-5.9.0/css/all.min.css"/>'>
         <link rel="stylesheet" type="text/css" href='<c:url value="/resources/assets/css/jquery.datetimepicker.min.css"/>'>
         <link rel="stylesheet" type="text/css" href='<c:url value="/resources/assets/jquery-ui/jquery-ui.min.css"/>'>
+        
+        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery-3.5.1.js"/>'></script>
+        <script src='<c:url value="/resources/assets/js/bootstrap.min.js"/>'></script>
+        <script src='<c:url value="/resources/js/jquery-1.12.4.min.js"/>'></script>
+        <script src='<c:url value="/resources/assets/jquery-ui/jquery-ui.min.js"/>'></script>
+        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery.dataTables.min.js"/>'></script>
+        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables//dataTables.bootstrap4.min.js"/>'></script>
+        
 
     </head>
 
@@ -155,12 +163,7 @@
 
         
         
-        <script src='<c:url value="/resources/js/jquery-1.12.4.min.js"/>'></script>
-        <script src='<c:url value="/resources/assets/js/bootstrap.min.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery-3.5.1.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery.dataTables.min.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables//dataTables.bootstrap4.min.js"/>'></script>
-        <script src='<c:url value="/resources/assets/jquery-ui/jquery-ui.min.js"/>'></script>
+        
         <script type="text/javascript" src='<c:url value="/resources/assets/js/funciones.js"/>'></script>
 
     </body>

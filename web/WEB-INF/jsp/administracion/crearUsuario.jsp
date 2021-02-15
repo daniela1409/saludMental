@@ -7,8 +7,7 @@
 <div class="card" style="padding: 10px">
     <div class="card-header " style="margin-bottom: 10px;"><h3>Agregar usuario</h3></div>
     <div class="card-body">
-        <form method="post" id="usuario">
-            
+        <form method="post" id="usuario" enctype="multipart/form-data">
             
             <div class="row">
                 <div class="col-md-6">
@@ -56,6 +55,32 @@
 </div>
   
     <script>
+        
+        $(document).ready(function () {
+            
+            $('#usuario').submit(function (evt) {
+                evt.preventDefault();
+                var formData = new FormData();
+                formData.append("persona", $("#selpersona").val());
+                formData.append("perfil", $("#us_usuario").val());
+                formData.append("clave", $("#us_clave").val());
+                
+
+                $.ajax({
+                    type: "POST",
+                    url: contextPath + "/administracion/crearUsuario",
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        var respuesta = JSON.parse(response);
+                        alert("exito")
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert("Error al almacenar usuario.");
+                    }});
+            });
+        });
         
         var i = 0;
         function mostrar() {

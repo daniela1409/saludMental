@@ -52,11 +52,11 @@ public class AdministracionController {
         return "administracion/crearUsuario";
     }
     
-    /*
+    
   @RequestMapping(value = "/crearUsuario", method = RequestMethod.POST)
     public @ResponseBody
-    String crearUsuario(@ModelAttribute co.edu.fnsp.spv.entidadesVista.User user, Model model) throws ParseException, IOException {
-        try {
+    String crearUsuario(@ModelAttribute co.edu.fnsp.saludMental.entidadesVista.User user, Model model) throws ParseException, IOException {
+        /*try {
             User userIngresar = new co.edu.fnsp.spv.entidades.User();
             userIngresar.setId(user.getPersona());
             userIngresar.setPerfil(user.getPerfil());
@@ -77,9 +77,10 @@ public class AdministracionController {
         } catch (Exception exc) {
             logger.error(exc);
             throw exc;
-        }
+        }*/
+        return null;
     }
-    
+    /*
     @RequestMapping(value = "/validarEdicion", method = RequestMethod.POST)
     public @ResponseBody
     String validarUsuario(@ModelAttribute co.edu.fnsp.spv.entidadesVista.ValidarEdicionUsuario userValidar, Model model) throws ParseException, IOException {
