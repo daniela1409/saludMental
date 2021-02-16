@@ -14,10 +14,10 @@ import java.util.List;
  * @author jedag
  */
 public interface IServicioAdministracion {
-    //void agregarUser(User user);
+    void agregarUser(User user);
     List<User> obtenerUsuarios();
     //User obtenerUsuario(String id);
     List<Persona> obtenerPersonas();
-    /*Persona obtenerPersona(String id); 
-    boolean validarEdicionUsuario(String nombreUsuario, int idUsuario);*/
+    Persona obtenerPersona(long id); 
+    //boolean validarEdicionUsuario(String nombreUsuario, int idUsuario);
 }

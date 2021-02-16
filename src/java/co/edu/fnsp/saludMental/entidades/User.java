@@ -10,7 +10,7 @@ package co.edu.fnsp.saludMental.entidades;
  * @author jedag
  */
 public class User {
-    private String id;
+    private long id;
     private String perfil;
     private String clave;
     private String nombres;
@@ -20,11 +20,11 @@ public class User {
     public User() {
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

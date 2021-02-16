@@ -23,10 +23,10 @@ public class ServicioAdministracion implements IServicioAdministracion{
     @Autowired
     private IRepositorioAdministracion repositorioAdministracion;
     
-   /* @Override
+    @Override
     public void agregarUser(User user){
         repositorioAdministracion.ingresarUser(user);
-    }*/
+    }
     
     @Override
     public List<User> obtenerUsuarios() {
@@ -44,12 +44,12 @@ public class ServicioAdministracion implements IServicioAdministracion{
         return repositorioAdministracion.obtenerPersonas();
         
     }
-    /*
+    
     @Override
-    public Persona obtenerPersona(String id){
+    public Persona obtenerPersona(long id){
         return repositorioAdministracion.obtenerPersona(id);
     }
-    
+    /*
     @Override
     public boolean validarEdicionUsuario(String nombreUsuario, int idUsuario) {
         int codigoOfertaEmpleo = repositorioAdministracion.obtenerIdUsuario(nombreUsuario, idUsuario);

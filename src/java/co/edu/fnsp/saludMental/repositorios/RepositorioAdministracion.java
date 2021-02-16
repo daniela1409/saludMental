@@ -47,7 +47,7 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
         this.obtenerIdUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerIdUsuario");
     }
     
-    /*
+    
     @Override
     public User ingresarUser(User user) {
         MapSqlParameterSource parametros = new MapSqlParameterSource();
@@ -60,7 +60,7 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
 
         return user;
     }
-    */
+    
     @Override
     public List<User> obtenerUsuarios() {
         Map resultado = obtenerUsuarios.execute();
@@ -84,24 +84,25 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
         user.setCorreo((String)resultado.get("varCorreoElectronico"));
         return user;
     }
+    */
     
     @Override
-    public Persona obtenerPersona(String id) {
+    public Persona obtenerPersona(long id) {
         Persona persona = new Persona();
         MapSqlParameterSource parametros = new MapSqlParameterSource();
-        parametros.addValue("id", id);
+        parametros.addValue("varIdPersona", id);
         
         Map resultado = obtenerPersona.execute(parametros);
-        persona.setId(id);
-        persona.setNombres((String)resultado.get("nombres"));
-        persona.setApellidos((String)resultado.get("apellidos"));
-        persona.setIdentificacion((String)resultado.get("identificacion"));
-        persona.setTipoId((String)resultado.get("tipoId"));
-        persona.setEmpleado((boolean)resultado.get("empleado"));
-        persona.setCorreo((String)resultado.get("correo"));
+        persona.setIdPersona(id);
+        persona.setNombres((String)resultado.get("varNombres"));
+        persona.setApellidos((String)resultado.get("varApellidos"));
+        persona.setNumeroDocumento((String)resultado.get("varNumeroDocumento"));
+        persona.setTipoDocumento((String)resultado.get("varTipoDocumento"));
+        persona.setEmail((String)resultado.get("varEmail"));
+        persona.setTelefono((String)resultado.get("varTelefono"));
         return persona;
     }
-    */
+    
     @Override
     public List<Persona> obtenerPersonas() {
         Map resultado = obtenerPersonas.execute();
@@ -122,4 +123,5 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
        
     }
 */
+
    }

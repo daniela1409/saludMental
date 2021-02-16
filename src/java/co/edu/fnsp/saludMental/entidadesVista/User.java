@@ -10,7 +10,7 @@ package co.edu.fnsp.saludMental.entidadesVista;
  * @author jedag
  */
 public class User {
-    private String persona;
+    private long persona;
     private String perfil;
     private String clave;
 
@@ -18,11 +18,11 @@ public class User {
     }
 
         
-    public String getPersona() {
+    public long getPersona() {
         return persona;
     }
 
-    public void setPersona(String persona) {
+    public void setPersona(long persona) {
         this.persona = persona;
     }
 

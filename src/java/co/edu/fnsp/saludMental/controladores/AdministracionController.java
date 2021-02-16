@@ -56,9 +56,9 @@ public class AdministracionController {
   @RequestMapping(value = "/crearUsuario", method = RequestMethod.POST)
     public @ResponseBody
     String crearUsuario(@ModelAttribute co.edu.fnsp.saludMental.entidadesVista.User user, Model model) throws ParseException, IOException {
-        /*try {
-            User userIngresar = new co.edu.fnsp.spv.entidades.User();
-            userIngresar.setId(user.getPersona());
+        try {
+            User userIngresar = new User();
+            userIngresar.setId((long)user.getPersona());
             userIngresar.setPerfil(user.getPerfil());
             userIngresar.setClave(user.getClave());
             
@@ -66,7 +66,7 @@ public class AdministracionController {
             
             userIngresar.setNombres(persona.getNombres());
             userIngresar.setApellidos(persona.getApellidos());
-            userIngresar.setCorreo(persona.getCorreo());
+            userIngresar.setCorreo(persona.getEmail());
                        
             
             servicioAdministracion.agregarUser(userIngresar);
@@ -77,8 +77,7 @@ public class AdministracionController {
         } catch (Exception exc) {
             logger.error(exc);
             throw exc;
-        }*/
-        return null;
+        }
     }
     /*
     @RequestMapping(value = "/validarEdicion", method = RequestMethod.POST)

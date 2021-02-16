@@ -14,10 +14,10 @@ import java.util.List;
  * @author jedag
  */
 public interface IRepositorioAdministracion {
-    //User ingresarUser(User user);
+    User ingresarUser(User user);
     List<User> obtenerUsuarios();
     //User obtenerUsuario(String nombreUsuario);
-    //Persona obtenerPersona(String id);
+    Persona obtenerPersona(long id);
     List<Persona> obtenerPersonas();
     //int obtenerIdUsuario(String nombreUsuario, int idUsuario);
 }
