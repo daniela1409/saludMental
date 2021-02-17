@@ -51,17 +51,40 @@
                             <button type="submit" class="btn btn-success">Buscar</button>
                         </form>
                     </div>
-                    <div class="col-md-4">
-                        <div id="cssmenu">
-                            <ul>
-                                <li class="active"><a href="#">Ingresar</a>
+                            
+                         
+                    <c:choose>
+                        <c:when test="${!pageContext.request.userPrincipal.authenticated}">
+                            <div class="col-md-4">
+                                <div id="cssmenu">
                                     <ul>
-                                        <li><a href="iniciarsesion.html">Iniciar sesion</a></li>
+                                        <li class="active"><a href="#">Ingresar</a>
+                                            <ul>
+                                                <li><a href="iniciarsesion.html">Iniciar sesion</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                                </div>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            
+                            <div class="col-md-4">
+                                <div id="cssmenu">
+                                    <ul>
+                                        <li class="active"><a href="#"><i class="fas fa-user fa-1x" aria-hidden="true"></i> ${pageContext.request.userPrincipal.getPrincipal().username}</a>
+                                            <ul>
+                                                <li><a href="${pageContext.request.contextPath}/logout">Cerrar sesión</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                                            
+                        </c:otherwise>  
+                    </c:choose>
+                    
                 </div>
             </div>
         </div>
@@ -79,13 +102,14 @@
                             </button>
                         </div>
                         <div class="collapse navbar-collapse" style="padding-right:px;" id="myNavbar">
-
+                            
                             <ul class="nav navbar-nav ">
                                 <li>
                                     <a style="color:white" href="indexSalud.html" role="button" aria-haspopup="true" aria-expanded="false">
                                         Inicio
                                     </a>
                                 </li>
+                                
                                 <li class='dropdown'>
                                     <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                         Administrar<span class="caret"></span>
