@@ -4,11 +4,11 @@
 
     <div class="imgFondo"></div>
     <div class="module form-module">
-        <div id="divRegistro" class="toggle registro active"><i class="fa fa-pencil"></i>
+        <!--<div id="divRegistro" class="toggle registro active"><i class="fa fa-pencil"></i>
             <div class="tooltip">
                 Registrar
             </div>
-        </div>
+        </div>-->
         <div id="divFormLogin" class="form form-login active">
             <div class="contenedorLogo">
                 <img src='<c:url value="/resources/imagenes/logoUdeaBlanco.png"/>'>
@@ -36,9 +36,10 @@
                 <a href="#" class="clave">Perdió su contraseña / Forgot your password?</a>
             </div>
         </div>
+            <!--
         <div id="divFormRegistro" class="form form-registro">
             <div class="contenedorLogo">
-                <img src='<c:url value="/resources/imagenes/logoUdeaBlanco.png"/>'>
+                <img src='<//c:url value="/resources/imagenes/logoUdeaBlanco.png"/>'>
             </div>
             <div class="header">
                 <div>
@@ -50,7 +51,7 @@
             </div>
             <div id="mensajeRegistro" class="label">
             </div>
-            <form:form method="POST" modelAttribute="usuario">
+            <//form:form method="POST" modelAttribute="usuario">
                 <input type="text" placeholder="Nombre Usuario / Username" required pattern="[0-9a-zA-Z]{1,15}" name="nombreUsuario" id="nombreUsuario" maxlength="50"/>
                 <input type="text" placeholder="Nombres / Firt Name" required name="nombres" id="nombres" maxlength="250"/>
                 <input type="text" placeholder="Apellidos / Last Name" required name="apellidos" id="apellidos" maxlength="250" />
@@ -58,11 +59,11 @@
                 <input type="password" placeholder="Contraseña / Password" required name="clave" id="clave" maxlength="50"/>
                 <input type="password" placeholder="Repita Contraseña / Repeat Password" required name="claveRepetida" id="claveRepetida" maxlength="50"/>
                 <input type="submit" value="Registrar"/>
-            </form:form>
+            <//form:form>
             <div class="cta">
                 <a href="#" class="login">Iniciar Sesión / Login</a>
             </div>                    
-        </div>
+        </div>-->
         <div id="divFormClave" class="form form-clave">
             <div class="contenedorLogo">
                 <img src='<c:url value="/resources/imagenes/logoUdeaBlanco.png"/>'>

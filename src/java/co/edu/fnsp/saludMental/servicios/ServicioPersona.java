@@ -8,6 +8,7 @@ package co.edu.fnsp.saludMental.servicios;
 import co.edu.fnsp.saludMental.entidades.Persona;
 import co.edu.fnsp.saludMental.repositorios.IRepositorioPersona;
 import java.util.ArrayList;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,8 +24,8 @@ public class ServicioPersona implements IServicioPersona {
     private IRepositorioPersona repositorioPersona;
     
     @Override
-    public ArrayList<Persona> obtenerPersonas(String filtro) {
-       return repositorioPersona.obtenerPersonas(filtro);
+    public List<Persona> obtenerPersonas() {
+       return repositorioPersona.obtenerPersonas();
     }
 
     @Override

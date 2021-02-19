@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Usuario implements Serializable {
         
-   private long idUsuario;
+    private long idUsuario;
     private long idPersona ;
     private String numeroIdentificacion;
     private String nombres;
@@ -164,5 +164,10 @@ public class Usuario implements Serializable {
      */
     public void setIdPersona(long idPersona) {
         this.idPersona = idPersona;
+    }
+    
+    public String nombreApellido(){
+        String nomApe = nombres + " " + apellidos;
+        return nomApe;
     }
 }

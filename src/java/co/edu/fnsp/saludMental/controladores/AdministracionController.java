@@ -4,8 +4,10 @@ package co.edu.fnsp.saludMental.controladores;
 
 
 import co.edu.fnsp.saludMental.entidades.Persona;
-import co.edu.fnsp.saludMental.entidades.User;
+import co.edu.fnsp.saludMental.entidades.Usuario;
 import co.edu.fnsp.saludMental.servicios.IServicioAdministracion;
+import co.edu.fnsp.saludMental.servicios.IServicioPersona;
+import co.edu.fnsp.saludMental.servicios.IServicioSeguridad;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
@@ -13,6 +15,7 @@ import javax.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -31,11 +34,20 @@ public class AdministracionController {
      private static final Logger logger = LogManager.getLogger(AdministracionController.class.getName());
     
     @Autowired
+    private IServicioSeguridad servicioSeguridad;
+    
+    @Autowired
+    private IServicioPersona servicioPersona;
+    
+    @Autowired
     private IServicioAdministracion servicioAdministracion;
     
     @RequestMapping(value = "/indexUsuario", method = RequestMethod.GET)
     public String userIndex(Model model) {
-        List<User> usuarios = servicioAdministracion.obtenerUsuarios();
+        
+        //Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        
+        List<Usuario> usuarios = servicioSeguridad.obtenerUsuarios();
 
         model.addAttribute("usuarios", usuarios);
         
@@ -46,7 +58,7 @@ public class AdministracionController {
   
     @RequestMapping(value = "/crearUsuario", method = RequestMethod.GET)
     public String usuarios(Model model) {
-        List<Persona> personas = servicioAdministracion.obtenerPersonas();
+        List<Persona> personas = servicioPersona.obtenerPersonas();
         
         model.addAttribute("personas", personas);
         return "administracion/crearUsuario";
@@ -57,27 +69,28 @@ public class AdministracionController {
     public @ResponseBody
     String crearUsuario(@ModelAttribute co.edu.fnsp.saludMental.entidadesVista.User user, Model model) throws ParseException, IOException {
         try {
-            User userIngresar = new User();
-            userIngresar.setId((long)user.getPersona());
-            userIngresar.setPerfil(user.getPerfil());
+            Usuario userIngresar = new Usuario();
+            userIngresar.setIdPersona((long)user.getPersona());
+            userIngresar.setNombreUsuario(user.getPerfil());
             userIngresar.setClave(user.getClave());
             
-            Persona persona = servicioAdministracion.obtenerPersona(user.getPersona());
+            Persona persona = servicioPersona.obtenerPersona(user.getPersona());
             
             userIngresar.setNombres(persona.getNombres());
             userIngresar.setApellidos(persona.getApellidos());
-            userIngresar.setCorreo(persona.getEmail());
+            userIngresar.setCorreoElectronico(persona.getEmail());
                        
             
-            servicioAdministracion.agregarUser(userIngresar);
+            servicioAdministracion.agregarUsuario(userIngresar);
             
-            return "administracion/usuarios";
+            return "redirect:/crearUsuario";
             
             
         } catch (Exception exc) {
             logger.error(exc);
             throw exc;
         }
+        
     }
     /*
     @RequestMapping(value = "/validarEdicion", method = RequestMethod.POST)

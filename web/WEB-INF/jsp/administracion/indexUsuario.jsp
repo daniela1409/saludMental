@@ -33,7 +33,7 @@
                                     <c:forEach var="usuario" items="${usuarios}" >
                                         <tr>
                                             <td>${usuario.nombreApellido()}</td>
-                                            <td>${usuario.getCorreo()}</td>
+                                            <td>${usuario.getCorreoElectronico()}</td>
                                             <td style='white-space: nowrap'>
                                                 <button class="btn btn-success btn-sm" onclick="mostrarOfertaEmpleo(${ofertaEmpleo.getId()})">Ver</button>
                                                 <button class="btn btn-info" style="margin-left: 10px;" onclick="validarEdicionOfertaEmpleo(${ofertaEmpleo.getId()})"><i class="fas fa-pencil-alt" aria-hidden="true"></i></button>

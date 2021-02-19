@@ -7,6 +7,7 @@ package co.edu.fnsp.saludMental.repositorios;
 
 import co.edu.fnsp.saludMental.entidades.Persona;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,7 @@ public class RepositorioPersona implements IRepositorioPersona {
         this.obtenerPersona = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerPersona");
     }
     
+    /*
     @Override
     public ArrayList<Persona> obtenerPersonas(String filtro) {
      MapSqlParameterSource parametros = new MapSqlParameterSource();
@@ -43,9 +45,16 @@ public class RepositorioPersona implements IRepositorioPersona {
         ArrayList<Persona> coleccion = (ArrayList<Persona>) resultado.get("personas");
 
         return coleccion;
+    }*/
+    
+    @Override
+    public List<Persona> obtenerPersonas() {
+        Map resultado = obtenerPersonas.execute();
+        List <Persona> personas = (List<Persona>) resultado.get("personas");
+        return personas;
     }
 
-    @Override
+    /*@Override
     public Persona obtenerPersona(long idPersona) {
         MapSqlParameterSource parametros = new MapSqlParameterSource();
         parametros.addValue("varIdPersona", idPersona);
@@ -57,6 +66,22 @@ public class RepositorioPersona implements IRepositorioPersona {
         persona.setNombres((String) resultado.get("varNombres"));
         persona.setApellidos((String) resultado.get("varApellidos"));
 
+        return persona;
+    }*/
+    @Override
+    public Persona obtenerPersona(long id) {
+        Persona persona = new Persona();
+        MapSqlParameterSource parametros = new MapSqlParameterSource();
+        parametros.addValue("varIdPersona", id);
+        
+        Map resultado = obtenerPersona.execute(parametros);
+        persona.setIdPersona(id);
+        persona.setNombres((String)resultado.get("varNombres"));
+        persona.setApellidos((String)resultado.get("varApellidos"));
+        persona.setNumeroDocumento((String)resultado.get("varNumeroDocumento"));
+        persona.setTipoDocumento((String)resultado.get("varTipoDocumento"));
+        persona.setEmail((String)resultado.get("varEmail"));
+        persona.setTelefono((String)resultado.get("varTelefono"));
         return persona;
     }
 }

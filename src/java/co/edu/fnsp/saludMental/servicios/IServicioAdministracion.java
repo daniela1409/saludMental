@@ -6,7 +6,7 @@
 package co.edu.fnsp.saludMental.servicios;
 
 import co.edu.fnsp.saludMental.entidades.Persona;
-import co.edu.fnsp.saludMental.entidades.User;
+import co.edu.fnsp.saludMental.entidades.Usuario;
 import java.util.List;
 
 /**
@@ -14,10 +14,10 @@ import java.util.List;
  * @author jedag
  */
 public interface IServicioAdministracion {
-    void agregarUser(User user);
-    List<User> obtenerUsuarios();
+    void agregarUsuario(Usuario usuario);
+    //List<User> obtenerUsuarios();
     //User obtenerUsuario(String id);
-    List<Persona> obtenerPersonas();
-    Persona obtenerPersona(long id); 
+    //List<Persona> obtenerPersonas();
+    //Persona obtenerPersona(long id); 
     //boolean validarEdicionUsuario(String nombreUsuario, int idUsuario);
 }

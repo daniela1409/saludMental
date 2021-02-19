@@ -7,7 +7,7 @@ package co.edu.fnsp.saludMental.repositorios;
 
 
 import co.edu.fnsp.saludMental.entidades.Persona;
-import co.edu.fnsp.saludMental.entidades.User;
+import co.edu.fnsp.saludMental.entidades.Usuario;
 import java.util.List;
 import java.util.Map;
 import javax.sql.DataSource;
@@ -39,7 +39,7 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
         jdbcTemplate.setResultsMapCaseInsensitive(true);
 
         this.ingresarUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("ingresarUsuario");
-        this.obtenerUsuarios = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerUsuarios").returningResultSet("usuarios", BeanPropertyRowMapper.newInstance(User.class));
+        this.obtenerUsuarios = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerUsuarios").returningResultSet("usuarios", BeanPropertyRowMapper.newInstance(Usuario.class));
         this.obtenerUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerUsuario");
         this.obtenerPersonas = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerPersonas").returningResultSet("personas", BeanPropertyRowMapper.newInstance(Persona.class));
         this.obtenerPersona = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerPersona");
@@ -49,25 +49,26 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
     
     
     @Override
-    public User ingresarUser(User user) {
+    public Usuario ingresarUsuario(Usuario usuario){
         MapSqlParameterSource parametros = new MapSqlParameterSource();
-        parametros.addValue("varNombreUsuario", user.getPerfil());
-        parametros.addValue("varIdPersona", user.getId());
-        parametros.addValue("varClave", user.getClave());
+        parametros.addValue("varNombreUsuario", usuario.getNombreUsuario());
+        parametros.addValue("varIdPersona", usuario.getIdPersona());
+        parametros.addValue("varClave", usuario.getClave());
         
         Map resultado = ingresarUsuario.execute(parametros);
         
 
-        return user;
+        return usuario;
     }
     
+    /*
     @Override
     public List<User> obtenerUsuarios() {
         Map resultado = obtenerUsuarios.execute();
         List <User> user = (List<User>) resultado.get("usuarios");
        
         return user;
-    }
+    }*/
     /*
      @Override
     public User obtenerUsuario(String nombreUsuario) {
@@ -85,7 +86,7 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
         return user;
     }
     */
-    
+    /*
     @Override
     public Persona obtenerPersona(long id) {
         Persona persona = new Persona();

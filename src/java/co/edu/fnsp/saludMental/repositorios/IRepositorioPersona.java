@@ -7,6 +7,7 @@ package co.edu.fnsp.saludMental.repositorios;
 
 import co.edu.fnsp.saludMental.entidades.Persona;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  */
 public interface IRepositorioPersona {
 
-    public ArrayList<Persona> obtenerPersonas(String filtro);
+    List<Persona> obtenerPersonas();
 
-    public Persona obtenerPersona(long idPersona);
+    Persona obtenerPersona(long id);
 }

@@ -47,7 +47,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         if (!password.equals(usuario.getClave())) {
             throw new BadCredentialsException("Clave incorrecta");
         }
-
+        
         Collection<? extends GrantedAuthority> privilegios = usuario.getPrivilegios();
         
          return new UsernamePasswordAuthenticationToken(new DetalleUsuario(usuario.getIdUsuario(), 

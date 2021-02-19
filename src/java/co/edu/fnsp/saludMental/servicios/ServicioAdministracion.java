@@ -7,7 +7,7 @@ package co.edu.fnsp.saludMental.servicios;
 
 
 import co.edu.fnsp.saludMental.entidades.Persona;
-import co.edu.fnsp.saludMental.entidades.User;
+import co.edu.fnsp.saludMental.entidades.Usuario;
 import co.edu.fnsp.saludMental.repositorios.IRepositorioAdministracion;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,22 +24,22 @@ public class ServicioAdministracion implements IServicioAdministracion{
     private IRepositorioAdministracion repositorioAdministracion;
     
     @Override
-    public void agregarUser(User user){
-        repositorioAdministracion.ingresarUser(user);
+    public void agregarUsuario(Usuario usuario){
+        repositorioAdministracion.ingresarUsuario(usuario);
     }
-    
+    /*
     @Override
     public List<User> obtenerUsuarios() {
         return repositorioAdministracion.obtenerUsuarios();
         
     }
-    /*
+    
     @Override
     public User obtenerUsuario(String id){
         return repositorioAdministracion.obtenerUsuario(id);
     }
     */
-    @Override
+    /*@Override
     public List<Persona> obtenerPersonas() {
         return repositorioAdministracion.obtenerPersonas();
         
@@ -48,7 +48,7 @@ public class ServicioAdministracion implements IServicioAdministracion{
     @Override
     public Persona obtenerPersona(long id){
         return repositorioAdministracion.obtenerPersona(id);
-    }
+    }*/
     /*
     @Override
     public boolean validarEdicionUsuario(String nombreUsuario, int idUsuario) {
