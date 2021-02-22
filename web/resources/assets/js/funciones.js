@@ -3,6 +3,7 @@ $(document).ready(function () {
     /* encabezado*/
 
     // $('#md_video').modal('toggle')
+    $('input.timepicker').timepicker({});
 
     $(window).scroll(function (event) {
 
@@ -44,7 +45,7 @@ $(document).ready(function () {
 
 
     $('#ocultaMain2').click(function () {
-
+        var n = 0;
         if (n == '0') { //verifica si la opcion de N es igual a cero oculta el menu
 
              $(".manlistas").css("display", "none");
@@ -103,12 +104,56 @@ $(document).ready(function () {
         
         
     });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+    $(".js-select-basic-single").select2({placeholder: "Seleccione"});
+    $(".navbar-sidenav li").tooltip();
+    $.datepicker.regional['es'] = {
+        closeText: 'Cerrar',
+        prevText: '< Ant',
+        nextText: 'Sig >',
+        currentText: 'Hoy',
+        monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        monthNamesShort: ['Ene', 'no', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+        dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mié', 'Juv', 'Vie', 'Sáb'],
+        dayNamesMin: ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sá'],
+        weekHeader: 'Sm',
+        dateFormat: 'dd/mm/yy',
+        firstDay: 1,
+        isRTL: false,
+        showMonthAfterYear: false,
+        yearSuffix: ''
+    };
+    $.datepicker.setDefaults($.datepicker.regional['es']);
+
     
 
 });
 
 
 
+$('.fecha').datepicker();
 
+$('.fecha2').datepicker({
+    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Deciembre'],
+    changeMonth: true,
+    changeYear: true,
+    yearRange: "c-95:c+1"
 
+});
+$('.fecha3').datepicker({
+    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Deciembre'],
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'mm/dd/yy',
+    yearRange: "c-95:c+1"
+});
 
+$('#hora_ini').datetimepicker({
+    datepicker:false,
+    format:'H:i'
+  });

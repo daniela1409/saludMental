@@ -96,6 +96,46 @@ $(document).ready(function () {
             .draw();
     });
 
+
+    var tableInvitado = $('#invitadoTable').DataTable({
+        "paging":   false,
+        "searching":false,
+        "language": {
+            "sInfo": "",
+            "sInfoEmpty": "",
+            "emptyTable": "Ningún dato disponible en esta tabla",
+            "sSearch": ""
+        }
+        
+    });
+    tableInvitado.clear().draw();
+    $('#btnAgregar').click(function(){
+        var invitado=$('#inInvitado').val();
+        // tableInvitado.row.add([invitado,"<a  data-toggle='modal' href='#md_editarAutor' style='margin-right: 5px; background:rgb(40, 167, 69);' class='btn btn-succes btn-sm btnEditI'><i class='fas fa-edit' style='color:white;'></i></a><button style='margin-right: 5px;' type='button'  class='btn btn-danger btn-sm btnBorrarI'><i class='fa fa-times'></i></button>"]).draw();
+        tableInvitado.row.add([invitado,"<button style='margin-right: 5px;' type='button'  class='btn btn-danger btn-sm btnBorrarI'><i class='fa fa-times'></i></button>"]).draw();
+        document.getElementById("inInvitado").value = "";
+       // document.getElementById("addInvitado").style.display='none';
+
+    });
+
+    $("#invitadoTable").on("click", ".btnBorrarI", function() {
+        tableInvitado.row($(this).parents('tr')).remove().draw(false);
+      });
+
+
+
+    // $('#hora_ini').datetimepicker(
+    //     {
+    //       datepicker:false,
+    //       format:'H:i'
+    //     });
+    //   $('#hora_fin').datetimepicker(
+    //     {
+    //       datepicker:false,
+    //       format:'H:i'
+    //     });
+
+
     // $('#tabEventos a:first').on('click', function () {
     //     table
     //         .columns(3)
@@ -125,3 +165,13 @@ $(document).ready(function () {
     //         document.getElementById('btnRegistro').disabled = true;
     //     }
 });
+
+function agregarInvitado(){
+
+    if ($('#addInvitado').css('display') == 'none') {
+        document.getElementById("addInvitado").style.display = '';
+    } else {
+        document.getElementById("addInvitado").style.display = 'none'
+    }
+
+}

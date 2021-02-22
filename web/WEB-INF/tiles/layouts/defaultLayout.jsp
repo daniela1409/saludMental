@@ -15,49 +15,59 @@
         <link rel="stylesheet" type="text/css" href='<c:url value="/resources/assets/fontawesome-free-5.9.0/css/all.min.css"/>'>
         <link rel="stylesheet" type="text/css" href='<c:url value="/resources/assets/css/jquery.datetimepicker.min.css"/>'>
         <link rel="stylesheet" type="text/css" href='<c:url value="/resources/assets/jquery-ui/jquery-ui.min.css"/>'>
+        
+        <script src='<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"/>'></script>
+        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery-3.5.1.js"/>'></script>
+        <script src='<c:url value="/resources/assets/jquery-ui/jquery-ui.min.js"/>'></script>
+        <script type="text/javascript" src='<c:url value="assets/js/jquery.timepicker.min.js"/>'></script>
+        <script src='<c:url value="/resources/assets/js/bootstrap.min.js"/>'></script>
+        <script type="text/javascript" src='<c:url value="/resources/assets/js/jquery.textcomplete.min.js"/>'></script>
+        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery.dataTables.min.js"/>'></script>
+        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables//dataTables.bootstrap4.min.js"/>'></script>
 
+       
     </head>
 
-    <body>
-    <header>
-        <div id="custom-head" style="background-color: #ececec;">
-            <div class="container" style="padding-left:50px">
-                <div class="row">
-                    <div class="col-md-3">
-                        <img src='<c:url value='/resources/assets/img/logofnsp.png'/>'
-                            alt="Universidad de Antioquia - Facultad Nacional de Salud Pública" style="width: 230px;">
-                    </div>
-                    <div class="col-md-5" align="right">S&iacute;guenos:&nbsp;&nbsp;
-                        <a class="fab fa-facebook-f circle facebook" data-toggle="tooltip" data-placement="bottom"
-                            title="Facebook"></a>
-                        <a class="fab fa-twitter circle twitter" data-toggle="tooltip" data-placement="bottom"
-                            title="Twitter"></a>
-                        <a class="fab fa-youtube circle youtube" data-toggle="tooltip" data-placement="bottom"
-                            title="Youtube"></a>
-                    </div>
-                    <div class="col-md-4" align="right">
-                        <form class="navbar-form navbar-left">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Escriba aquí su búsqueda">
+    <body style="display: flex; flex-direction: column; height: 100%;">
+        <header>
+            <div id="custom-head" style="background-color: #ececec;">
+                <div class="container" style="padding-left:50px">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src='<c:url value='/resources/assets/img/logofnsp.png'/>'
+                                 alt="Universidad de Antioquia - Facultad Nacional de Salud Pública" style="width: 230px;">
+                        </div>
+                        <div class="col-md-5" align="right">S&iacute;guenos:&nbsp;&nbsp;
+                            <a class="fab fa-facebook-f circle facebook" data-toggle="tooltip" data-placement="bottom"
+                               title="Facebook"></a>
+                            <a class="fab fa-twitter circle twitter" data-toggle="tooltip" data-placement="bottom"
+                               title="Twitter"></a>
+                            <a class="fab fa-youtube circle youtube" data-toggle="tooltip" data-placement="bottom"
+                               title="Youtube"></a>
+                        </div>
+                        <div class="col-md-4" align="right">
+                            <form class="navbar-form navbar-left">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Escriba aquí su búsqueda">
+                                </div>
+                                <button type="submit" class="btn btn-success">Buscar</button>
+                            </form>
+                        </div>
+                        <div class="col-md-4">
+                            <div id="cssmenu">
+                                <ul>
+                                    <li class="active"><a href="#">Ingresar</a>
+                                        <ul>
+                                            <li><a href='${pageContext.request.contextPath}/login'>Iniciar sesion</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
                             </div>
-                            <button type="submit" class="btn btn-success">Buscar</button>
-                        </form>
-                    </div>
-                    <div class="col-md-4">
-                        <div id="cssmenu">
-                            <ul>
-                                <li class="active"><a href="#">Ingresar</a>
-                                    <ul>
-                                        <li><a href="iniciarsesion.html">Iniciar sesion</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
         <section id="nav-container" class="container-fluid" style="width: 100%;">
             <div class="container">
@@ -74,7 +84,7 @@
 
                             <ul class="nav navbar-nav ">
                                 <li>
-                                    <a style="color:white" href="indexSalud.html" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <a style="color:white" href='${pageContext.request.contextPath}/index' role="button" aria-haspopup="true" aria-expanded="false">
                                         Inicio
                                     </a>
                                 </li>
@@ -84,8 +94,8 @@
                                         Apropiación social <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="webinar.html"><i class=""></i>Webinars</a></li>
-                                        <li><a href="videoteca.html"><i class=""></i>Videoteca</a></li>
+                                        <li><a href='${pageContext.request.contextPath}/webinar/index'><i class=""></i>Webinars</a></li>
+                                        <li><a href='${pageContext.request.contextPath}/videoteca/index'><i class=""></i>Videoteca</a></li>
                                     </ul>
                                 </li>
                                 <li class="dropdown">
@@ -105,13 +115,13 @@
                                         Educación<span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="educacionNoFormal.html"><i class=""></i>Educación no formal</a></li>
+                                        <li><a href='${pageContext.request.contextPath}/educacion/index'><i class=""></i>Educación no formal</a></li>
 
                                     </ul>
                                 </li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
-                                <li class="dropdown">
+                                <li class="dropdown" style="display:none;">
                                     <a style="color:white" href="" role="button" data-toggle="dropdown" aria-haspopup="true"
                                        aria-expanded="false">
                                         Datos & software<span class="caret"></span>
@@ -123,7 +133,7 @@
                                         <li><a href="analisis.html"><i class=""></i>Análisis</a></li>
                                     </ul>
                                 </li>
-                                <li><a id='ocultaMain' style="color:aliceblue; " class='btn btn-sm-1' role='button' aria-haspopup='true'
+                                <li><a id='ocultaMain' style="color:aliceblue; " class='btn btn-sm-1' role='button' onclick="hideHeader()" aria-haspopup='true'
                                        aria-expanded='false'><span id="abajo" class="fa fa-angle-double-up"></span></a></li>
                             </ul>
                         </div>
@@ -131,30 +141,22 @@
                 </nav>
             </div>
         </section>
-        
 
-        <section id="site-content">
+
+        <div class="container" id="cont" style="margin-top: 15px;width:90%; flex: 1 0 auto;">
             <tiles:insertAttribute name="body" />
-        </section>
+        </div>
 
-        
-        <footer id="footer">
-           <tiles:insertAttribute name="footer" />
+
+        <footer id="footer" style="background-color: #0d4928; color: white; padding: 20px; width:100%; flex: 0 0 auto;">
+            <tiles:insertAttribute name="footer" />
         </footer>
-
-
-
-        <script src='<c:url value="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/js/funciones.js"/>'></script>
-        <script src='<c:url value="/resources/assets/js/bootstrap.min.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery-3.5.1.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/js/jquery.textcomplete.min.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/js/jquery.jplayer.min.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/js/jplayer.playlist.min.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery.dataTables.min.js"/>'></script>
-        <script type="text/javascript" src='<c:url value="/resources/assets/jsTables//dataTables.bootstrap4.min.js"/>'></script>
-        <script src='<c:url value="/resources/assets/jquery-ui/jquery-ui.min.js"/>'></script>
-
+      
+        <script type="text/javascript" src='<c:url value="/resources/assets/js/funcion.js"/>'></script>
+        <script type="text/javascript" src='<c:url value="/resources/assets/js/webinar.js"/>'></script>
+        <script type="text/javascript" src='<c:url value="/resources/assets/js/videoteca.js"/>'></script>
+        <script type="text/javascript" src='<c:url value="/resources/assets/js/educacionNoFormal.js"/>'></script>
+        
     </body>
 
 </html>

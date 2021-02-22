@@ -292,7 +292,7 @@ a.thumbnail.active, a.thumbnail:focus, a.thumbnail:hover{
 
 .fontp
 {
-font-size: 16px;`
+font-size: 16px;
 font-weight: bold;
 margin: 18px 0px 24px 0px;
 }
@@ -1027,7 +1027,7 @@ body
   }
   #cssmenu ul ul li a {
     color: rgba(0,94,44,1);
-    background: rgba(237,237,237,1); Color de fondo submenus 
+    background: rgba(237,237,237,1); 
     
   }
   #cssmenu ul ul li:hover > a,
@@ -1077,7 +1077,6 @@ body
     display: block;
     height: 2px;
     width: 20px;
-    background:;
     content: '';
   }
   #cssmenu #menu-button.menu-opened:after {
@@ -2128,3 +2127,5 @@ mark
   top: 0;
   width: 100%;
   }
+  th { font-size: 15px; }
+td { font-size: 14px; }

@@ -93,7 +93,34 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-1" style="float: right;" id="flecha">
-        <h4><a id="ocultaMain2" role="button" aria-haspopup="true" aria-expanded="false"
+        <h4><a id="ocultaMain2" onclick="hideFooter()" role="button" aria-haspopup="true" aria-expanded="false"
                style="color: white;"><span id="flefooter" class="fa fa-angle-double-down"></span></a></h4>
     </div>
+    
+    <script>
+        var n = 0;
+    /*  function hideFooter(){
+
+        if (n == '0') { //verifica si la opcion de N es igual a cero oculta el menu
+
+             $(".manlistas").css("display", "none");
+            
+            document.getElementById("flefooter").className = "fa fa-angle-double-up";
+             $("#footer").css("padding", "0");
+
+            n = 1;
+        } else {
+            $(".manlistas").css("display", "block");
+            
+            document.getElementById("flefooter").className = "fa fa-angle-double-down";
+             $("#footer").css("padding", "25px");
+            
+            n = 0;
+
+        }
+          
+      }*/
+  
+    </script>
+    
 </div>
