@@ -10,6 +10,9 @@ package co.edu.fnsp.saludMental.entidades;
  * @author William
  */
 public class Rol {
+    
+    private int idRol;
+    private String nombre;
 
     /**
      * @return the idRol
@@ -38,6 +41,5 @@ public class Rol {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    private int idRol;
-    private String nombre;
+    
 }

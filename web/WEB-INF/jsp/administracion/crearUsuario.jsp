@@ -10,7 +10,7 @@
         <form:form method="post" modelAttribute="user" >
             
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                    <div class="form-group">
                        <label>Persona</label><a href="#" data-toggle="tooltip" data-placement="right" title = "Debe seleccionar el nombre de la persona" style="margin-left: 5px;"><i class="fa fa-question-circle" aria-hidden="true"></i></a><br>
                        <select  name="persona" id="selpersona" class="js-select-basic-single" style="width: 100%; height: 32px">
@@ -24,10 +24,26 @@
                        </select>
                    </div>
                 </div>
-                <div class="col-md-6" >
+                
+                <div class="col-md-4">
+                   <div class="form-group">
+                       <label>Perfil</label><a href="#" data-toggle="tooltip" data-placement="right" title = "Debe seleccionar el nombre de la persona" style="margin-left: 5px;"><i class="fa fa-question-circle" aria-hidden="true"></i></a><br>
+                       <select  name="perfil" id="selPerfil" class="js-select-basic-single" style="width: 100%; height: 32px">
+                       <option value = "" ></option>
+                            <c:forEach var="rol" items="${roles}">
+                                
+                                <option value="${rol.getIdRol()}">${rol.getNombre()}</option>
+                                
+                            </c:forEach>
+                            
+                       </select>
+                   </div>
+                </div>
+                
+                <div class="col-md-4" >
                     <div class="form-group">
                         <label>Nombre de usuario</label><a href="#" data-toggle="tooltip" data-placement="right" style="margin-left: 5px;"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
-                        <input class="form-control form-control-sm"name="perfil" id="us_usuario">                   
+                        <input class="form-control form-control-sm"name="nombreUsuario" id="us_usuario">                   
                     </div>
                 </div>
             </div>
@@ -36,13 +52,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Contraseña</label><a href="#" data-toggle="tooltip" data-placement="right" title = "debe crear contraseña" style="margin-left: 5px;"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
-                        <input class="form-control form-control-sm" type="password" name="clave" id="us_clave">                   
+                        <input class="form-control form-control-sm" type="password" name="clave" id="us_clave" maxlength="20">                   
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">  
                         <label>Confirmar contraseña</label><a href="#" data-toggle="tooltip" data-placement="right" title = "debe escribir la contraseña para confirmar" style="margin-left: 5px;"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
-                        <input class="form-control form-control-sm" type="password" name="clavecon" id="us_clavecon">                
+                        <input class="form-control form-control-sm" type="password" name="clavecon" id="us_clavecon" maxlength="20">                
                     </div>
                 </div>
             </div>
@@ -56,7 +72,7 @@
   
     <script>
         
-        $(document).ready(function () {
+        /*$(document).ready(function () {
             
             $('#usuario').submit(function (evt) {
                 evt.preventDefault();
@@ -80,13 +96,21 @@
                         alert("Error al almacenar usuario.");
                     }});
             });
-        });
+        });*/
         
         var i = 0;
         function mostrar() {
            
            if($("#selpersona").val()=== ""){
-                alert("Debe indicar la clave");
+                alert("Debe indicar quién es");
+                return;
+            }
+            else if($("#us_usuario").val()===""){
+                alert("Debe indicar el nombre de usuario");
+                return;
+            }
+            else if($("#selPerfil").val()===""){
+                alert("Debe indicar el tipo de perfil");
                 return;
             }
             else if($("#us_clave").val()===""){

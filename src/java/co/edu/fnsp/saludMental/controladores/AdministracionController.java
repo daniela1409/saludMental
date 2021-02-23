@@ -3,7 +3,9 @@ package co.edu.fnsp.saludMental.controladores;
 
 
 
+import co.edu.fnsp.saludMental.entidades.Perfil;
 import co.edu.fnsp.saludMental.entidades.Persona;
+import co.edu.fnsp.saludMental.entidades.Rol;
 import co.edu.fnsp.saludMental.entidades.Usuario;
 import co.edu.fnsp.saludMental.servicios.IServicioAdministracion;
 import co.edu.fnsp.saludMental.servicios.IServicioPersona;
@@ -47,9 +49,12 @@ public class AdministracionController {
         
         //Usuario usuario = (Usuario) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         
+        
+        
         List<Usuario> usuarios = servicioSeguridad.obtenerUsuarios();
 
         model.addAttribute("usuarios", usuarios);
+        
         
         return "administracion/indexUsuario";
     }
@@ -59,8 +64,11 @@ public class AdministracionController {
     @RequestMapping(value = "/crearUsuario", method = RequestMethod.GET)
     public String usuarios(Model model) {
         List<Persona> personas = servicioPersona.obtenerPersonas();
+        List<Rol> roles = servicioAdministracion.obtenerRoles();
         
         model.addAttribute("personas", personas);
+        model.addAttribute("roles", roles);
+        
         return "administracion/crearUsuario";
     }
     
@@ -71,7 +79,7 @@ public class AdministracionController {
         try {
             Usuario userIngresar = new Usuario();
             userIngresar.setIdPersona((long)user.getPersona());
-            userIngresar.setNombreUsuario(user.getPerfil());
+            userIngresar.setNombreUsuario(user.getNombreUsuario());
             userIngresar.setClave(user.getClave());
             
             Persona persona = servicioPersona.obtenerPersona(user.getPersona());
@@ -81,8 +89,15 @@ public class AdministracionController {
             userIngresar.setCorreoElectronico(persona.getEmail());
                        
             
-            servicioAdministracion.agregarUsuario(userIngresar);
+            Usuario usuario = servicioAdministracion.agregarUsuario(userIngresar);
             
+            Perfil perfil = new Perfil();
+            
+            perfil.setIdApp(5);
+            perfil.setIdRol(user.getPerfil());
+            perfil.setIdUsuario((int)usuario.getIdUsuario());
+            
+            perfil = (Perfil)servicioAdministracion.crearPerfil(perfil);
             return "redirect:/crearUsuario";
             
             

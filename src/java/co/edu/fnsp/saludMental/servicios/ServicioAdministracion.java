@@ -6,7 +6,9 @@
 package co.edu.fnsp.saludMental.servicios;
 
 
+import co.edu.fnsp.saludMental.entidades.Perfil;
 import co.edu.fnsp.saludMental.entidades.Persona;
+import co.edu.fnsp.saludMental.entidades.Rol;
 import co.edu.fnsp.saludMental.entidades.Usuario;
 import co.edu.fnsp.saludMental.repositorios.IRepositorioAdministracion;
 import java.util.List;
@@ -24,8 +26,19 @@ public class ServicioAdministracion implements IServicioAdministracion{
     private IRepositorioAdministracion repositorioAdministracion;
     
     @Override
-    public void agregarUsuario(Usuario usuario){
-        repositorioAdministracion.ingresarUsuario(usuario);
+    public Usuario agregarUsuario(Usuario usuario){
+        return repositorioAdministracion.ingresarUsuario(usuario);
+    }
+    
+    public List<Rol> obtenerRoles(){
+        List<Rol> roles = repositorioAdministracion.obtenerRoles();
+        return roles;
+        
+    }
+    
+    public Perfil crearPerfil(Perfil perfil){
+        Perfil perfilR = repositorioAdministracion.crearPerfil(perfil);
+        return perfilR;
     }
     /*
     @Override

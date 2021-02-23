@@ -6,7 +6,9 @@
 package co.edu.fnsp.saludMental.repositorios;
 
 
+import co.edu.fnsp.saludMental.entidades.Perfil;
 import co.edu.fnsp.saludMental.entidades.Persona;
+import co.edu.fnsp.saludMental.entidades.Rol;
 import co.edu.fnsp.saludMental.entidades.Usuario;
 import java.util.List;
 import java.util.Map;
@@ -30,19 +32,22 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
     private SimpleJdbcCall obtenerUsuario;
     private SimpleJdbcCall obtenerPersonas;
     private SimpleJdbcCall obtenerPersona;
-    
+    private SimpleJdbcCall obtenerRoles;
+    private SimpleJdbcCall crearPerfil;
     private SimpleJdbcCall obtenerIdUsuario;
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         jdbcTemplate.setResultsMapCaseInsensitive(true);
-
+        
         this.ingresarUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("ingresarUsuario");
-        this.obtenerUsuarios = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerUsuarios").returningResultSet("usuarios", BeanPropertyRowMapper.newInstance(Usuario.class));
+        this.obtenerRoles = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerRoles").returningResultSet("roles", BeanPropertyRowMapper.newInstance(Rol.class));
+        this.crearPerfil = new SimpleJdbcCall(jdbcTemplate).withProcedureName("crearPerfil");
+        /*this.obtenerUsuarios = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerUsuarios").returningResultSet("usuarios", BeanPropertyRowMapper.newInstance(Usuario.class));
         this.obtenerUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerUsuario");
         this.obtenerPersonas = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerPersonas").returningResultSet("personas", BeanPropertyRowMapper.newInstance(Persona.class));
-        this.obtenerPersona = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerPersona");
+        this.obtenerPersona = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerPersona");*/
         
         this.obtenerIdUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerIdUsuario");
     }
@@ -57,10 +62,30 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
         
         Map resultado = ingresarUsuario.execute(parametros);
         
+        usuario.setIdUsuario((long)resultado.get("varIdUsuario"));
 
         return usuario;
     }
     
+    @Override
+    public List<Rol> obtenerRoles(){
+        Map resultado = obtenerRoles.execute();
+        List <Rol> roles = (List<Rol>) resultado.get("roles");
+        return roles;
+    }
+    
+    @Override
+    public Perfil crearPerfil(Perfil perfil){
+        MapSqlParameterSource parametros = new MapSqlParameterSource();
+        parametros.addValue("varUsuario", (long)perfil.getIdUsuario());
+        parametros.addValue("varRol", (int)perfil.getIdRol());
+        parametros.addValue("varAplicacion",(int) perfil.getIdApp());
+        
+        Map resultado = crearPerfil.execute(parametros);
+        perfil.setIdPerfil((int)resultado.get("varId"));
+
+        return perfil;
+    }
     /*
     @Override
     public List<User> obtenerUsuarios() {

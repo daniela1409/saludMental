@@ -11,7 +11,8 @@ package co.edu.fnsp.saludMental.entidadesVista;
  */
 public class User {
     private long persona;
-    private String perfil;
+    private int perfil;
+    private String nombreUsuario;
     private String clave;
 
     public User() {
@@ -26,11 +27,11 @@ public class User {
         this.persona = persona;
     }
 
-    public String getPerfil() {
+    public int getPerfil() {
         return perfil;
     }
 
-    public void setPerfil(String perfil) {
+    public void setPerfil(int perfil) {
         this.perfil = perfil;
     }
 
@@ -40,6 +41,14 @@ public class User {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
     }
     
     
