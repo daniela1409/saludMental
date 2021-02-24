@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -109,17 +110,33 @@
                                         Inicio
                                     </a>
                                 </li>
+                                <c:forEach var="privilegio" items="${privilegios}" >
+                            
+                                    <c:set var="priv" value="${privilegio}"></c:set>
+                                    <c:choose>
+                                        <c:when test="${priv == 'SUPER_ADMINISTRADOR' }">
+                                             <c:set var="priv" value="1"></c:set>
+                                        </c:when> 
+                                        <c:otherwise>
+                                            <c:set var="priv" value="0"></c:set>
+
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>   
                                 
-                                <li class='dropdown'>
-                                    <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                        Administrar<span class="caret"></span>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                       
-                                        <li><a href='${pageContext.request.contextPath}/administracion/indexUsuario'>Usuarios</a></li>
-                                        
-                                    </ul>
-                                </li>
+                                <c:if test="${priv=='1'}">
+                                    <li class='dropdown'>
+                                        <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                            Administrar<span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+
+                                            <li><a href='${pageContext.request.contextPath}/administracion/indexUsuario'>Usuarios</a></li>
+
+                                        </ul>
+                                    </li>
+                                </c:if>
+                                
                                 <li class="dropdown">
                                     <a style="color:white" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                                        aria-haspopup="true" aria-expanded="false">
@@ -178,7 +195,7 @@
         <section id="site-content">
             <tiles:insertAttribute name="body" />
         </section>
-
+        
         
         <footer id="footer">
            <tiles:insertAttribute name="footer" />

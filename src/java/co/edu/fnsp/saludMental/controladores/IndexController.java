@@ -5,6 +5,11 @@
  */
 package co.edu.fnsp.saludMental.controladores;
 
+import java.util.Collection;
+import java.util.Set;
+import org.springframework.security.core.GrantedAuthority;
+import static org.springframework.security.core.authority.AuthorityUtils.authorityListToSet;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,7 +24,11 @@ public class IndexController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(Model model) {
-
+        Collection<? extends GrantedAuthority> privilegio = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        
+        Set<String> privilegios = authorityListToSet(privilegio);
+        
+        model.addAttribute("privilegios", privilegios);
         
         return "index";
     }
