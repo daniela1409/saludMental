@@ -19,6 +19,7 @@ public interface IServicioAdministracion {
     Usuario agregarUsuario(Usuario usuario);
     List<Rol> obtenerRoles();
     Perfil crearPerfil(Perfil perfil);
+    boolean validarEdicionUsuario(String nombreUsuario, int idUsuario);
     //List<User> obtenerUsuarios();
     //User obtenerUsuario(String id);
     //List<Persona> obtenerPersonas();

@@ -135,8 +135,8 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
         List <Persona> personas = (List<Persona>) resultado.get("personas");
         return personas;
     }
-    
-    /*@Override
+    */
+    @Override
     public int obtenerIdUsuario(String nombreUsuario, int idUsuario) {
         MapSqlParameterSource parametros = new MapSqlParameterSource();
         parametros.addValue("varNombreUsuario", nombreUsuario);
@@ -148,6 +148,6 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
         
        
     }
-*/
+
 
    }

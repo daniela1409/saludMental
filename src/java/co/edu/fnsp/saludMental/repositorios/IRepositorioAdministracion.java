@@ -19,6 +19,7 @@ public interface IRepositorioAdministracion {
     Usuario ingresarUsuario(Usuario usuario);
     List<Rol> obtenerRoles();
     Perfil crearPerfil(Perfil perfil);
+    int obtenerIdUsuario(String nombreUsuario, int idUsuario);
     //List<User> obtenerUsuarios();
     //User obtenerUsuario(String nombreUsuario);
     //Persona obtenerPersona(long id);

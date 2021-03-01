@@ -71,4 +71,8 @@
         <put-attribute name="title" value="crearUsuarios" />  
         <put-attribute name="body" value="/WEB-INF/jsp/administracion/crearUsuario.jsp" />  
     </definition> 
+    <definition name="administracion/editarUsuario" extends="base-definition">  
+        <put-attribute name="title" value="editarUsiario" />  
+        <put-attribute name="body" value="/WEB-INF/jsp/administracion/editarUsuario.jsp" />  
+    </definition> 
 </tiles-definitions>

@@ -18,8 +18,8 @@
         <link rel="stylesheet" type="text/css" href='<c:url value="/resources/assets/jquery-ui/jquery-ui.min.css"/>'>
         
         <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery-3.5.1.js"/>'></script>
-        <script src='<c:url value="/resources/assets/js/bootstrap.min.js"/>'></script>
         <script src='<c:url value="/resources/js/jquery-1.12.4.min.js"/>'></script>
+        <script src='<c:url value="/resources/assets/js/bootstrap.min.js"/>'></script>
         <script src='<c:url value="/resources/assets/jquery-ui/jquery-ui.min.js"/>'></script>
         <script type="text/javascript" src='<c:url value="/resources/assets/jsTables/jquery.dataTables.min.js"/>'></script>
         <script type="text/javascript" src='<c:url value="/resources/assets/jsTables//dataTables.bootstrap4.min.js"/>'></script>
@@ -110,6 +110,7 @@
                                         Inicio
                                     </a>
                                 </li>
+                                
                                 <c:forEach var="privilegio" items="${privilegios}" >
                             
                                     <c:set var="priv" value="${privilegio}"></c:set>

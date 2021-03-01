@@ -30,15 +30,26 @@ public class ServicioAdministracion implements IServicioAdministracion{
         return repositorioAdministracion.ingresarUsuario(usuario);
     }
     
+    @Override
     public List<Rol> obtenerRoles(){
         List<Rol> roles = repositorioAdministracion.obtenerRoles();
         return roles;
         
     }
     
+    @Override
     public Perfil crearPerfil(Perfil perfil){
         Perfil perfilR = repositorioAdministracion.crearPerfil(perfil);
         return perfilR;
+    }
+    
+    
+    @Override
+    public boolean validarEdicionUsuario(String nombreUsuario, int idUsuario) {
+        int codigoOfertaEmpleo = repositorioAdministracion.obtenerIdUsuario(nombreUsuario, idUsuario);
+        
+        return codigoOfertaEmpleo!=0;
+        
     }
     /*
     @Override

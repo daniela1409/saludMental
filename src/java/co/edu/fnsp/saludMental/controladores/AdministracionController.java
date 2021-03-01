@@ -110,10 +110,10 @@ public class AdministracionController {
         }
         
     }
-    /*
-    @RequestMapping(value = "/validarEdicion", method = RequestMethod.POST)
+    
+    @RequestMapping(value = "/validarUsuario", method = RequestMethod.POST)
     public @ResponseBody
-    String validarUsuario(@ModelAttribute co.edu.fnsp.spv.entidadesVista.ValidarEdicionUsuario userValidar, Model model) throws ParseException, IOException {
+    String validarUsuario(@ModelAttribute co.edu.fnsp.saludMental.entidadesVista.ValidarEdicionUsuario userValidar, Model model) throws ParseException, IOException {
         
         boolean puedeEditar = servicioAdministracion.validarEdicionUsuario(userValidar.getNombreUsuario(), (int)userValidar.getIdUsuario());
         
@@ -126,11 +126,7 @@ public class AdministracionController {
     
     
     @RequestMapping(value = "/editarUsuario", method = RequestMethod.POST)
-    public String editarUsuario(Model model) {
-        List<User> usuarios = servicioAdministracion.obtenerUsuarios();
-
-        model.addAttribute("usuarios", usuarios);
-        
+    public String editarUsuario(@ModelAttribute co.edu.fnsp.saludMental.entidadesVista.ValidarEdicionUsuario userValidar, Model model) {
         return "administracion/editarUsuario";
-    }*/
+    }
 }
