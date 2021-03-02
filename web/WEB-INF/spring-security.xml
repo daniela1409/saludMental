@@ -8,10 +8,10 @@
         <http pattern="/login/recuperarClave" security="none"/>  
         <http pattern="/login/crear" security="none"/>  
         <http auto-config='true' use-expressions="true">
-            <intercept-url pattern="/index" access="isAuthenticated()" />	
+            <intercept-url pattern="/index" />	
             <intercept-url pattern="/login/cambiarClave" access="isAuthenticated()" />
             <intercept-url pattern="/usuarios/editar" access="isAuthenticated()" />
-            <intercept-url pattern="/index" access="isAuthenticated()" />	
+            <intercept-url pattern="/index" />	
             <intercept-url pattern="/usuarios/**" access="isAuthenticated()" />	
             <intercept-url pattern="/bienes/**" access="isAuthenticated()" />	
             <intercept-url pattern="/cosumo/**" access="isAuthenticated()" />	

@@ -125,8 +125,35 @@ public class AdministracionController {
     }
     
     
-    @RequestMapping(value = "/editarUsuario", method = RequestMethod.POST)
-    public String editarUsuario(@ModelAttribute co.edu.fnsp.saludMental.entidadesVista.ValidarEdicionUsuario userValidar, Model model) {
+    @RequestMapping(value = "/mostrarEditarUsuario", method = RequestMethod.POST)
+    public String mostrarEditarUsuario(@ModelAttribute co.edu.fnsp.saludMental.entidadesVista.ValidarEdicionUsuario userValidar, Model model) {
+        
+        Usuario usuario = new Usuario();
+        
+        usuario.setIdUsuario(userValidar.getIdUsuario());
+        
+        List<Rol> roles = servicioAdministracion.obtenerRoles();
+        
+        model.addAttribute("roles", roles);
+        
+       
         return "administracion/editarUsuario";
     }
+    
+    
+    @RequestMapping(value = "/editarUsuario", method = RequestMethod.POST)
+    public @ResponseBody
+    String editarUsuario(@ModelAttribute co.edu.fnsp.saludMental.entidadesVista.User user, Model model) throws ParseException, IOException {
+        try {
+            Usuario userIngresar = new Usuario();
+            
+            
+             return "";
+        } catch (Exception exc) {
+            logger.error(exc);
+            throw exc;
+        }
+        
+    }
+   
 }

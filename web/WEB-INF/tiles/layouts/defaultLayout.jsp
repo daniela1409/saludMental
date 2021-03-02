@@ -1,4 +1,9 @@
 
+<%@page import="static org.springframework.security.core.authority.AuthorityUtils.authorityListToSet"%>
+<%@page import="java.util.Set"%>
+<%@page import="org.springframework.security.core.GrantedAuthority"%>
+<%@page import="java.util.Collection"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -61,7 +66,7 @@
                                     <ul>
                                         <li class="active"><a href="#">Ingresar</a>
                                             <ul>
-                                                <li><a href="iniciarsesion.html">Iniciar sesion</a></li>
+                                                <li><a href="${pageContext.request.contextPath}/login">Iniciar sesion</a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -111,20 +116,23 @@
                                     </a>
                                 </li>
                                 
-                                <c:forEach var="privilegio" items="${privilegios}" >
-                            
-                                    <c:set var="priv" value="${privilegio}"></c:set>
-                                    <c:choose>
-                                        <c:when test="${priv == 'SUPER_ADMINISTRADOR' }">
-                                             <c:set var="priv" value="1"></c:set>
-                                        </c:when> 
-                                        <c:otherwise>
-                                            <c:set var="priv" value="0"></c:set>
-
-                                        </c:otherwise>
-                                    </c:choose>
-                                </c:forEach>   
+                                <%
+                                    Collection<? extends GrantedAuthority> privilegio = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        
+                                    Set<String> privilegios = authorityListToSet(privilegio);
+                                    
+                                    for(String priv : privilegios){
+                                        if(priv != "ADMINISTRADOR" || priv != "SUPER_ADMINISTRADOR" ){
+                                        
+                                            %>
                                 
+                                                <c:set var="priv" value="1"></c:set>
+                                            <%
+                                        }
+                                    }
+                                %>
+                                
+                               
                                 <c:if test="${priv=='1'}">
                                     <li class='dropdown'>
                                         <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

@@ -24,11 +24,11 @@ public class IndexController {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String index(Model model) {
-        Collection<? extends GrantedAuthority> privilegio = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+        /*Collection<? extends GrantedAuthority> privilegio = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
         
         Set<String> privilegios = authorityListToSet(privilegio);
         
-        model.addAttribute("privilegios", privilegios);
+        model.addAttribute("privilegios", privilegios);*/
         
         return "index";
     }

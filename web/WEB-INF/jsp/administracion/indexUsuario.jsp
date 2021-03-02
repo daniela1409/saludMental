@@ -83,8 +83,8 @@
         </div>
         
     </article>
-   <form:form method="POST" modelAttribute="mostrarEdicionUsuario" action="${pageContext.request.contextPath}/administracion/editarUsuario">
-        <input type='hidden' class="form-control" name="idUsuarioEdicion" id="idUsuarioEdicion" />
+   <form:form method="POST" modelAttribute="mostrarEdicionUsuario" action="${pageContext.request.contextPath}/administracion/mostrarEditarUsuario">
+        <input type='hidden' class="form-control" name="idUsuario" id="idUsuarioEdicion" />
     </form:form>
  <script>
     
