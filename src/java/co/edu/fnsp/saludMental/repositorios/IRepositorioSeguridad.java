@@ -42,4 +42,6 @@ public interface IRepositorioSeguridad {
     void crearPrivilegio(Privilegio privilegio);
 
     boolean existePrivilegio(String codigo);
+    
+    
 }

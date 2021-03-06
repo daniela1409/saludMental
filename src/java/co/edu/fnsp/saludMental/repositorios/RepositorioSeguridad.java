@@ -29,7 +29,6 @@ public class RepositorioSeguridad implements IRepositorioSeguridad {
     private final int ID_SALUD_MENTAL = 5;
     
     private SimpleJdbcCall obtenerUsuario;
-    private SimpleJdbcCall obtenerUsuarioPorId;
     private SimpleJdbcCall obtenerClaveUsuario;
     private SimpleJdbcCall obtenerUsuarios;
     private SimpleJdbcCall ingresarUsuario;
@@ -50,13 +49,13 @@ public class RepositorioSeguridad implements IRepositorioSeguridad {
     private SimpleJdbcCall obtenerOpcionesMenuPrivilegio;
     private SimpleJdbcCall ingresarOpcionMenuPrivilegio;
     private SimpleJdbcCall eliminarOpcionMenuPrivilegio;
+    
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         jdbcTemplate.setResultsMapCaseInsensitive(true);
         this.obtenerUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("ObtenerUsuario");
-        this.obtenerUsuarioPorId = new SimpleJdbcCall(jdbcTemplate).withProcedureName("ObtenerUsuarioPorId");
         this.obtenerClaveUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("ObtenerClaveUsuario");
         this.ingresarUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("IngresarUsuario");
         this.actualizarUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("ActualizarUsuario");
@@ -123,7 +122,7 @@ public class RepositorioSeguridad implements IRepositorioSeguridad {
 
     @Override
     public Usuario obtenerUsuario(long idUsuario) {
-        Usuario usuario = null;
+        /*Usuario usuario = null;
         MapSqlParameterSource parametros = new MapSqlParameterSource();
         parametros.addValue("varIdUsuario", idUsuario);
 
@@ -143,7 +142,8 @@ public class RepositorioSeguridad implements IRepositorioSeguridad {
             usuario.setPrivilegios(privilegios);
         }
 
-        return usuario;
+        return usuario;*/
+        return null;
     }
 
     @Override
@@ -368,4 +368,6 @@ public class RepositorioSeguridad implements IRepositorioSeguridad {
             }
         }
     }
+    
+    
 }

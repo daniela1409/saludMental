@@ -111,28 +111,17 @@
                             
                             <ul class="nav navbar-nav ">
                                 <li>
-                                    <a style="color:white" href="indexSalud.html" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <a style="color:white" href="${pageContext.request.contextPath}/index'" role="button" aria-haspopup="true" aria-expanded="false">
                                         Inicio
                                     </a>
                                 </li>
+                                <c:set var="priv" value="0"></c:set>
+                                <c:forEach var="privilegio" items="${privilegios}" >
+                                    <c:if test="${privilegio == 'SUPER_ADMINISTRADOR' || privilegio == 'ADMINISTRADOR' }">
+                                        <c:set var="priv" value="1"></c:set>
+                                    </c:if>
+                                </c:forEach>
                                 
-                                <%
-                                    Collection<? extends GrantedAuthority> privilegio = SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-        
-                                    Set<String> privilegios = authorityListToSet(privilegio);
-                                    
-                                    for(String priv : privilegios){
-                                        if(priv != "ADMINISTRADOR" || priv != "SUPER_ADMINISTRADOR" ){
-                                        
-                                            %>
-                                
-                                                <c:set var="priv" value="1"></c:set>
-                                            <%
-                                        }
-                                    }
-                                %>
-                                
-                               
                                 <c:if test="${priv=='1'}">
                                     <li class='dropdown'>
                                         <a href='#' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -205,15 +194,11 @@
             <tiles:insertAttribute name="body" />
         </section>
         
-        
+                                
         <footer id="footer">
            <tiles:insertAttribute name="footer" />
         </footer>
 
-
-        
-        
-        
         <script type="text/javascript" src='<c:url value="/resources/assets/js/funciones.js"/>'></script>
 
     </body>

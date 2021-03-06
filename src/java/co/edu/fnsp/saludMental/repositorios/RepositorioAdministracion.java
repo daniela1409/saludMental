@@ -27,14 +27,12 @@ import org.springframework.stereotype.Repository;
 @Repository("repositorioAdministracion")
 public class RepositorioAdministracion implements IRepositorioAdministracion{
     
-    private SimpleJdbcCall ingresarUsuario;
-    private SimpleJdbcCall obtenerUsuarios;
-    private SimpleJdbcCall obtenerUsuario;
-    private SimpleJdbcCall obtenerPersonas;
-    private SimpleJdbcCall obtenerPersona;
+    
     private SimpleJdbcCall obtenerRoles;
     private SimpleJdbcCall crearPerfil;
     private SimpleJdbcCall obtenerIdUsuario;
+    private SimpleJdbcCall obtenerUsuarioId;
+    private SimpleJdbcCall ingresarUsuario;
 
     @Autowired
     public void setDataSource(DataSource dataSource) {
@@ -44,12 +42,9 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
         this.ingresarUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("ingresarUsuario");
         this.obtenerRoles = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerRoles").returningResultSet("roles", BeanPropertyRowMapper.newInstance(Rol.class));
         this.crearPerfil = new SimpleJdbcCall(jdbcTemplate).withProcedureName("crearPerfil");
-        /*this.obtenerUsuarios = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerUsuarios").returningResultSet("usuarios", BeanPropertyRowMapper.newInstance(Usuario.class));
-        this.obtenerUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerUsuario");
-        this.obtenerPersonas = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerPersonas").returningResultSet("personas", BeanPropertyRowMapper.newInstance(Persona.class));
-        this.obtenerPersona = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerPersona");*/
         
         this.obtenerIdUsuario = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerIdUsuario");
+        this.obtenerUsuarioId = new SimpleJdbcCall(jdbcTemplate).withProcedureName("obtenerUsuarioId");
     }
     
     
@@ -86,58 +81,10 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
 
         return perfil;
     }
-    /*
-    @Override
-    public List<User> obtenerUsuarios() {
-        Map resultado = obtenerUsuarios.execute();
-        List <User> user = (List<User>) resultado.get("usuarios");
-       
-        return user;
-    }*/
-    /*
-     @Override
-    public User obtenerUsuario(String nombreUsuario) {
-        User user = new User();
-        MapSqlParameterSource parametros = new MapSqlParameterSource();
-        parametros.addValue("varNombreUsuario", nombreUsuario);
-
-        Map resultado = obtenerUsuario.execute(parametros);
-        user.setPerfil(nombreUsuario);
-        user.setNombres((String)resultado.get("varNombres"));
-        user.setApellidos((String)resultado.get("varApellidos"));
-        user.setId((String)resultado.get("varIdUsuario"));
-        user.setClave((String)resultado.get("varClave"));
-        user.setCorreo((String)resultado.get("varCorreoElectronico"));
-        return user;
-    }
-    */
-    /*
-    @Override
-    public Persona obtenerPersona(long id) {
-        Persona persona = new Persona();
-        MapSqlParameterSource parametros = new MapSqlParameterSource();
-        parametros.addValue("varIdPersona", id);
-        
-        Map resultado = obtenerPersona.execute(parametros);
-        persona.setIdPersona(id);
-        persona.setNombres((String)resultado.get("varNombres"));
-        persona.setApellidos((String)resultado.get("varApellidos"));
-        persona.setNumeroDocumento((String)resultado.get("varNumeroDocumento"));
-        persona.setTipoDocumento((String)resultado.get("varTipoDocumento"));
-        persona.setEmail((String)resultado.get("varEmail"));
-        persona.setTelefono((String)resultado.get("varTelefono"));
-        return persona;
-    }
+    
     
     @Override
-    public List<Persona> obtenerPersonas() {
-        Map resultado = obtenerPersonas.execute();
-        List <Persona> personas = (List<Persona>) resultado.get("personas");
-        return personas;
-    }
-    */
-    @Override
-    public int obtenerIdUsuario(String nombreUsuario, int idUsuario) {
+    public long obtenerIdUsuario(String nombreUsuario, long idUsuario) {
         MapSqlParameterSource parametros = new MapSqlParameterSource();
         parametros.addValue("varNombreUsuario", nombreUsuario);
         parametros.addValue("varCodigoEn", idUsuario);
@@ -148,6 +95,26 @@ public class RepositorioAdministracion implements IRepositorioAdministracion{
         
        
     }
+    
+    @Override
+    public Usuario obtenerUsuarioId(long idUsuario) {
+        MapSqlParameterSource parametros = new MapSqlParameterSource();
+        parametros.addValue("varCodigoEn", idUsuario);
 
+        Map resultado = obtenerUsuarioId.execute(parametros);
+        
+        Usuario usuario = new Usuario();
+        usuario.setNumeroIdentificacion((String) resultado.get("varNumeroIdentificacion"));
+        usuario.setNombreUsuario((String) resultado.get("varNombreUsuario"));
+        usuario.setNombres((String) resultado.get("varNombres"));
+        usuario.setApellidos((String) resultado.get("varApellidos"));
+        usuario.setClave((String) resultado.get("varClave"));
+        usuario.setCorreoElectronico((String) resultado.get("varCorreoElectronico"));
+        usuario.setIdUsuario(Integer.parseInt(resultado.get("varIdUsuario").toString()));
+        usuario.setIdPersona((long) resultado.get("varIdPersona"));
+
+        
+       return usuario;
+    }
 
    }

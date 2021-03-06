@@ -37,7 +37,8 @@ public class ServicioSeguridad implements IServicioSeguridad {
 
     @Override
     public Usuario obtenerUsuario(long idUsuario) {
-        return repositorioSeguridad.obtenerUsuario(idUsuario);
+        //return repositorioSeguridad.obtenerUsuario(idUsuario);
+        return null;
     }
 
     @Override

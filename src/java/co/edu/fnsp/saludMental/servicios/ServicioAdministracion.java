@@ -45,10 +45,18 @@ public class ServicioAdministracion implements IServicioAdministracion{
     
     
     @Override
-    public boolean validarEdicionUsuario(String nombreUsuario, int idUsuario) {
-        int codigoOfertaEmpleo = repositorioAdministracion.obtenerIdUsuario(nombreUsuario, idUsuario);
+    public boolean validarEdicionUsuario(String nombreUsuario, long idUsuario) {
+        long idUs = repositorioAdministracion.obtenerIdUsuario(nombreUsuario, idUsuario);
         
-        return codigoOfertaEmpleo!=0;
+        return idUs!=0;
+        
+    }
+    
+    @Override
+    public Usuario obtenerUsuarioId(long idUsuario) {
+        Usuario usuario = repositorioAdministracion.obtenerUsuarioId(idUsuario);
+        
+        return usuario;
         
     }
     /*
@@ -68,11 +76,14 @@ public class ServicioAdministracion implements IServicioAdministracion{
         return repositorioAdministracion.obtenerPersonas();
         
     }
-    
+    */
+    /*
     @Override
     public Persona obtenerPersona(long id){
-        return repositorioAdministracion.obtenerPersona(id);
-    }*/
+        //return repositorioAdministracion.obtenerPersona(id);
+        return null;
+    }
+    */
     /*
     @Override
     public boolean validarEdicionUsuario(String nombreUsuario, int idUsuario) {

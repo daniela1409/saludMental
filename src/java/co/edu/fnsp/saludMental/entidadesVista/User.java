@@ -10,6 +10,7 @@ package co.edu.fnsp.saludMental.entidadesVista;
  * @author jedag
  */
 public class User {
+    private String idUsuario;
     private long persona;
     private int perfil;
     private String nombreUsuario;
@@ -50,6 +51,15 @@ public class User {
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
+
+    public String getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(String idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     
     
 }

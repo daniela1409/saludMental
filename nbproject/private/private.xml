@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Daniela%20Osorio/Documents/Portales/saludMental/src/java/co/edu/fnsp/saludMental/entidadesVista/User.java</file>
             <file>file:/C:/Users/Daniela%20Osorio/Documents/Portales/saludMental/web/WEB-INF/jsp/administracion/indexUsuario.jsp</file>
             <file>file:/C:/Users/Daniela%20Osorio/Documents/Portales/saludMental/web/WEB-INF/jsp/administracion/crearUsuario.jsp</file>
-            <file>file:/C:/Users/Daniela%20Osorio/Documents/Portales/saludMental/src/java/co/edu/fnsp/saludMental/controladores/LoginController.java</file>
-            <file>file:/C:/Users/Daniela%20Osorio/Documents/Portales/saludMental/src/java/co/edu/fnsp/saludMental/repositorios/RepositorioAdministracion.java</file>
             <file>file:/C:/Users/Daniela%20Osorio/Documents/Portales/saludMental/src/java/co/edu/fnsp/saludMental/controladores/AdministracionController.java</file>
-            <file>file:/C:/Users/Daniela%20Osorio/Documents/Portales/saludMental/src/java/co/edu/fnsp/saludMental/repositorios/IRepositorioAdministracion.java</file>
-            <file>file:/C:/Users/Daniela%20Osorio/Documents/Portales/saludMental/web/WEB-INF/spring-security.xml</file>
-            <file>file:/C:/Users/Daniela%20Osorio/Documents/Portales/saludMental/src/java/co/edu/fnsp/saludMental/servicios/ServicioAdministracion.java</file>
-            <file>file:/C:/Users/Daniela%20Osorio/Documents/Portales/saludMental/src/java/co/edu/fnsp/saludMental/servicios/IServicioAdministracion.java</file>
+            <file>file:/C:/Users/Daniela%20Osorio/Documents/Portales/saludMental/web/WEB-INF/tiles/tiles.xml</file>
         </group>
     </open-files>
 </project-private>

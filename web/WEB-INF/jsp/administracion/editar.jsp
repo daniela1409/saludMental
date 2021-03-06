@@ -1,4 +1,3 @@
-
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
@@ -7,7 +6,7 @@
 <div class="card" style="padding: 10px">
     <div class="card-header " style="margin-bottom: 10px;"><h3>Agregar usuario</h3></div>
     <div class="card-body">
-        <form:form method="post" modelAttribute="user" >
+        <form method="post" id="user" >
             
             <div class="row">
                 <div class="col-md-4">
@@ -62,32 +61,36 @@
                     </div>
                 </div>
             </div>
-            
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <button class="btn btn-success" type="button" onclick="mostrar()">Guardar</button>
             <!--<input type="submit" value="Submit">-->
-        </form:form>
+        </form>
     </div>
     
 </div>
   
     <script>
         
-        /*$(document).ready(function () {
+        $(document).ready(function () {
             
-            $('#usuario').submit(function (evt) {
+            $('#user').submit(function (evt) {
                 evt.preventDefault();
                 var formData = new FormData();
                 formData.append("persona", $("#selpersona").val());
+                formData.append("nombreUsuario", $("#nombreUsuario").val());
                 formData.append("perfil", $("#us_usuario").val());
                 formData.append("clave", $("#us_clave").val());
                 
 
                 $.ajax({
                     type: "POST",
-                    url: contextPath + "/administracion/crearUsuario",
+                    url: contextPath + "/administracion/mostrarEditarUsuario/editar",
                     data: formData,
                     processData: false,
                     contentType: false,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("X-CSRF-Token", $('input[name=_csrf]').val());
+                    },
                     success: function (response) {
                         var respuesta = JSON.parse(response);
                         alert("exito")
@@ -96,16 +99,12 @@
                         alert("Error al almacenar usuario.");
                     }});
             });
-        });*/
+        });
         
         var i = 0;
         function mostrar() {
            
-           if($("#selpersona").val()=== ""){
-                alert("Debe indicar quién es");
-                return;
-            }
-            else if($("#us_usuario").val()===""){
+           if($("#us_usuario").val()===""){
                 alert("Debe indicar el nombre de usuario");
                 return;
             }
@@ -141,6 +140,4 @@
        
         }   
     </script>
-
-
 

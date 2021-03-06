@@ -11,6 +11,7 @@ import co.edu.fnsp.saludMental.entidades.Usuario;
 import co.edu.fnsp.saludMental.servicios.IServicioAdministracion;
 import co.edu.fnsp.saludMental.servicios.IServicioPersona;
 import co.edu.fnsp.saludMental.servicios.IServicioSeguridad;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.Collection;
@@ -30,6 +31,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -128,32 +130,35 @@ public class AdministracionController {
     @RequestMapping(value = "/mostrarEditarUsuario", method = RequestMethod.POST)
     public String mostrarEditarUsuario(@ModelAttribute co.edu.fnsp.saludMental.entidadesVista.ValidarEdicionUsuario userValidar, Model model) {
         
-        Usuario usuario = new Usuario();
         
-        usuario.setIdUsuario(userValidar.getIdUsuario());
+        
+        Usuario usuarioEditar = (Usuario)servicioAdministracion.obtenerUsuarioId((long)userValidar.getIdUsuario());
         
         List<Rol> roles = servicioAdministracion.obtenerRoles();
         
         model.addAttribute("roles", roles);
-        
+        model.addAttribute("usuario", usuarioEditar);
        
-        return "administracion/editarUsuario";
+        return "administracion/editar";
     }
     
     
-    @RequestMapping(value = "/editarUsuario", method = RequestMethod.POST)
+    @RequestMapping(value = "/mostrarEditarUsuario/editar", method = RequestMethod.POST)
     public @ResponseBody
     String editarUsuario(@ModelAttribute co.edu.fnsp.saludMental.entidadesVista.User user, Model model) throws ParseException, IOException {
-        try {
-            Usuario userIngresar = new Usuario();
-            
-            
+       
              return "";
-        } catch (Exception exc) {
-            logger.error(exc);
-            throw exc;
-        }
+        
         
     }
    
+    
+    @RequestMapping(value = "/{idUsuario}", method = RequestMethod.GET)
+    public @ResponseBody
+    String obtenerUsuario(@PathVariable long idUsuario, Model model) {
+        Usuario usuario = servicioAdministracion.obtenerUsuarioId(idUsuario);
+        Gson gson = new Gson();
+
+        return gson.toJson(usuario);
+    }
 }
